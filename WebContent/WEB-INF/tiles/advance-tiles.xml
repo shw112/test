@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="sub" template="/WEB-INF/views/sub-template.jsp">
+		<put-attribute name="side" value="/WEB-INF/views/side.jsp"/>
+		<put-attribute name="main" value="/WEB-INF/views/main.jsp"/>
+	</definition>
+	
+	<!-- Nesting Definition -->
+	<definition name="t_nested" template="/WEB-INF/views/tiles-template.jsp">
+		<put-attribute name="title" value=""/>
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+		<put-attribute name="nav" value="/WEB-INF/views/nav.jsp"/>
+		<put-attribute name="body" value="sub"/>
+		<put-attribute name="footer" value="/WEB-INF/views/banner.jsp"/>
+	</definition>
+	
+	<!-- Extending Definition -->
+	<definition name="t_abstract" template="/WEB-INF/views/tiles-template.jsp">
+		<put-attribute name="title" value=""/>
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+		<put-attribute name="nav" value="/WEB-INF/views/nav.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/banner.jsp"/>
+	</definition>
+	<definition name="t_login" extends="t_abstract">
+		<put-attribute name="title" value="Tiles-extends"/>
+		<put-attribute name="body" value="/WEB-INF/views/account/loginform.jsp"/>
+	</definition>
+	
+	<definition name="t_board_detail" extends="t_abstract">
+		<put-attribute name="title" expression="${requestScope.vo.title}"/>
+		<put-attribute name="body" value="/WEB-INF/views/board/detail.jsp"/>
+	</definition>
+	<definition name="t_jquery" extends="t_abstract">
+		<put-attribute name="title" expression="JQuery"/>
+		<put-attribute name="body" expression="/WEB-INF/views/jquery/${view}.jsp"/>
+	</definition>
+</tiles-definitions>

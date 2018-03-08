@@ -37,5 +37,10 @@
 		<property name="dateFormat" value="yyyy-MM-dd"/>
 	</bean>
 	<bean factory-bean="builder" factory-method="create"/>
-	
+	<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
+		<property name="order" value="7"/>
+	</bean>
+	<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions" value="/WEB-INF/tiles/*-tiles.xml"/>
+	</bean>
 </beans>
